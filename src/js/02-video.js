@@ -12,7 +12,7 @@ const onPlay = function (data) {
 };
 player.on('timeupdate', throttle(onPlay, 1000));
 
-function resumexPlayback() {
+function resumePlayback() {
     if (JSON.parse(localStorage.getItem(TIME_KEY)) === null) {
         return;
     }
