@@ -32,4 +32,33 @@ function init() {
 
 refs.form.addEventListener('input', throttle(onInput, 500));
 
-init();
+init ();
+
+const onSubmit = e => {
+    e.preventDefault();
+
+    const {
+        elements: { email, message },
+    } = e.currentTarget;
+
+    if (message.value !== '' && email.value !== '') {
+        feedbackFromState.email = email.value;
+        feedbackFromState.message = message.value;
+
+        console.log(feedbackFromState);
+        e.currentTarget.reset();
+        localStorage.removeItem('feedback-form-state');
+        feedbackFromState = {
+            email: '',
+            message: '',
+        };
+    } else {
+        alert('Please fill in all fields!');
+    }
+};
+
+// refs.form.addEventListener('input', throttle(onInput, 500));
+refs.form.addEventListener('submit', onSubmit);
+
+
+// init();
