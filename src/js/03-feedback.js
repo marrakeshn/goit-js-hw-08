@@ -24,7 +24,7 @@ const refs = {
 
 function init() {
     const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    feedbackFromState = data;
+    feedbackFromState = data ?? feedbackFromState;
     
     refs.input.value = data?.email || '';
     refs.textarea.value = data?.message || '';
